@@ -1,6 +1,6 @@
-package com.glsia.tp1.security;
+package com.glsiA.projet.security;
 
-import com.glsia.tp1.service.UserPrincipalDetailService;
+import com.glsiA.projet.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,23 +17,23 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private UserPrincipalDetailService userPrincipalDetailService;
+    private UserService userService;
 
-    public SecurityConfiguration(UserPrincipalDetailService userPrincipalDetailService) {
-        this.userPrincipalDetailService = userPrincipalDetailService;
+    public SecurityConfiguration(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /*
+
         auth
                 .inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("admin123"))
+                .withUser("admin").password(passwordEncoder().encode("admin"))
                 .roles("ADMIN")
                 .and()
-                .withUser("vendeur").password(passwordEncoder().encode("vendeur123"))
+                .withUser("vendeur").password(passwordEncoder().encode("vendeur"))
                 .roles("VENDEUR");
-         */
+
 
         auth.authenticationProvider(daoAuthenticationProvider());
     }
@@ -67,7 +67,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .clearAuthentication(true).invalidateHttpSession(true)
                 .and()
-                .rememberMe().tokenValiditySeconds(2592000).key("mySecret").userDetailsService(userPrincipalDetailService);
+                .rememberMe().tokenValiditySeconds(2592000).key("mySecret").userDetailsService(userService);
     }
 
     @Bean
@@ -80,7 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(this.userPrincipalDetailService);
+        daoAuthenticationProvider.setUserDetailsService(this.userService);
 
         return daoAuthenticationProvider;
     }

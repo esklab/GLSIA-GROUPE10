@@ -1,7 +1,8 @@
-package com.glsia.tp1.controller;
+package com.glsiA.projet.controller;
 
-import com.glsia.tp1.models.User;
-import com.glsia.tp1.service.UserPrincipalDetailService;
+
+import com.glsiA.projet.models.User;
+import com.glsiA.projet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,19 +14,19 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserPrincipalDetailService userPrincipalDetailService;
+    private UserService userService;
 
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserPrincipalDetailService userPrincipalDetailService, PasswordEncoder passwordEncoder) {
-        this.userPrincipalDetailService = userPrincipalDetailService;
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
 
 
     @GetMapping("/all")
     public String showAllUsers(Model model){
-        model.addAttribute("users", userPrincipalDetailService.getList());
+        model.addAttribute("users", userService.getList());
         return "users/listUser";
     }
 
@@ -39,16 +40,16 @@ public class UserController {
         user.setRole("VENDEUR");
         user.setPermission("");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userPrincipalDetailService.save(user);
+        userService.save(user);
         return "redirect:/Users/all";
     }
 
     @PostMapping("/updatepassword")
     public String updatepassword(@RequestParam("username") String username, @RequestParam("newpassword") String newpassword){
-        User user = userPrincipalDetailService.getUserByUsername(username);
+        User user = userService.getUserByUsername(username);
         if(user != null){
             user.setPassword(passwordEncoder.encode(newpassword));
-            userPrincipalDetailService.save(user);
+            userService.save(user);
             return "redirect:/forgetpassword?success";
         }
         return "redirect:/forgetpassword?error";
@@ -57,14 +58,14 @@ public class UserController {
     @GetMapping("/profile")
     public String userProfile(Model model)
     {
-        model.addAttribute("user", userPrincipalDetailService.getCurrentUser());
+        model.addAttribute("user", userService.getCurrentUser());
         return "users/userProfile";
     }
 
     @GetMapping("/view/{id}")
     public String viewUser(@PathVariable("id") String username, Model model)
     {
-        model.addAttribute("user", userPrincipalDetailService.getUserByUsername(username));
+        model.addAttribute("user", userService.getUserByUsername(username));
         return "users/viewUser";
     }
 

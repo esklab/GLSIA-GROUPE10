@@ -1,7 +1,8 @@
-package com.java.tp1.repository;
+package com.glsiA.projet.repository;
 
-import com.java.tp1.modele.Categorie;
 
+
+import com.glsiA.projet.models.Categorie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

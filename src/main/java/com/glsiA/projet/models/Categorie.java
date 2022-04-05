@@ -1,4 +1,4 @@
-package com.java.tp1.modele;
+package com.glsiA.projet.models;
 
 
 import lombok.*;
@@ -8,11 +8,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity
-@Table(name="categories")
+//@Entity
+@Table(name="categorie")
 // @Data -- bug
-@Getter
-@Setter
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

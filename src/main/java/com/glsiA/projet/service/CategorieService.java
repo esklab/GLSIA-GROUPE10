@@ -1,8 +1,8 @@
-package com.java.tp1.service;
+package com.glsiA.projet.service;
 
-import com.java.tp1.modele.Categorie;
+import com.glsiA.projet.models.Categorie;
 
-import com.java.tp1.repository.CategorieRepository;
+import com.glsiA.projet.repository.CategorieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

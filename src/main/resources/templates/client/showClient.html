@@ -34,21 +34,24 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Libelle</th>
-            <th scope="col">Date création</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Telephone</th>
             <th></th>
 
 
 
         </tr>
         </thead>
-        <tr th:each="p:${listCategorie}">
+        <tr th:each="p:${listProduit}">
             <th scope="row" th:text="${p.id}">1</th>
-            <td th:text="${p.libelle}"></td>
-            <td th:text="${p.dateCreation}"></td>
+            <td th:text="${p.nom}"></td>
+            <td th:text="${p.prenom}"></td>
+            <td th:text="${p.adresse}"></td>
+            <td th:text="${p.telephone}"></td>
             <td>
-                <a th:href="@{/categorie/edit/{id}(id=${p.id})}">Edit |</a>
-                <a th:href="@{/categorie/delete/{id}(id=${p.id})}">Delete</a>
+                <a th:href="@{/categorie/edit/{id}(id=${p.id})}">CHOISIR</a>
             </td>
 
 

@@ -1,10 +1,10 @@
-package com.java.tp1.controller;
+package com.glsiA.projet.controller;
 
 
-import com.java.tp1.modele.Approvisionement;
-import com.java.tp1.modele.Categorie;
-import com.java.tp1.service.ApprovisionementService;
-import com.java.tp1.service.CategorieService;
+import com.glsiA.projet.models.Approvisionement;
+import com.glsiA.projet.models.Categorie;
+import com.glsiA.projet.service.ApprovisionementService;
+import com.glsiA.projet.service.CategorieService;
 import org.apache.coyote.ajp.AbstractAjpProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,9 +36,12 @@ public class ApprovisionementController {
     @PostMapping("/save")
     public  String  save(Approvisionement approvisionement){
         //categorie.setDateCreation(LocalDate.now());
-        approvisionement.setDateApprov(LocalDate.now());
+      //  approvisionement.setDateApprov(LocalDate.now());
         approvisionementService.saveApprovisionement(approvisionement);
+        approvisionementService.updateProduit(approvisionement.getProduit().getId(),approvisionement.getQuantite());
         return  "redirect:/approvisionement/afficher";
+
+
     }
 
     @GetMapping("/edit/{id}")

@@ -24,18 +24,94 @@
             </ol>
         </nav>
     </div>
-<div class="container">
-    <h2>formulaire de saisie  de categorie</h2>
-    <form th:action="@{/categorie/save}"  method="post">
-        <div class="mb-3" >
-            <label class="form-label">Libelle</label>
-            <input name="libelle" type="text" class="form-control" placeholder="libellé du  produit"/>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste produit</h5>
+
+                        <!-- Default Table -->
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Libelle</th>
+                                <th scope="col">Quantite Stock</th>
+                                <th scope="col">Prix</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p:${listProduit}">
+                                <th scope="row" th:text="${p.id}"></th>
+                                <td th:text="${p.libelle}"></td>
+                                <td th:text="${p.qteStok}"></td>
+                                <td th:text="${p.prix}"></td>
+
+                                <td>
+                                    <a th:href="@{/vente/creat/{id}(id=${p.id})}">Ajouter</a>
+                                    <a th:href="@{/vente/creat/{id}(id=${p.id})}">Edit |</a>
+
+
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste selectioner</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Libelle</th>
+                                <th scope="col">Prix</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p:${listLigne}">
+                                <th scope="row" th:text="${p.id}"></th>
+                                <td th:text="${p.libelle}"></td>
+
+                                <td th:text="${p.prix}"></td>
+
+                                <td>
+                                    <a th:href="@{/vente/remo/{id}(id=${p.id})}">Retirer</a>
+
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
-
-        <button TYPE="submit" CLASS="btn btn-primary">ok</button>
-    </form>
-
-</div>
+    </section>
 </main>
 <th:block th:replace="partie/bas :: bas"></th:block>
 <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>

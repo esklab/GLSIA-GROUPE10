@@ -1,15 +1,15 @@
-package com.java.tp1.modele;
+package com.glsiA.projet.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "lignevente")
 public class LigneVente {
     @Id
@@ -26,5 +26,10 @@ public class LigneVente {
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Produit produit;
+
+    @ManyToOne()
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    private User user;
+    private int userId;
 
 }

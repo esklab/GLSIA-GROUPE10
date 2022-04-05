@@ -1,8 +1,8 @@
-package com.java.tp1.controller;
+package com.glsiA.projet.controller;
 
-import com.java.tp1.modele.Produit;
-import com.java.tp1.service.CategorieService;
-import com.java.tp1.service.ProduitService;
+import com.glsiA.projet.models.Produit;
+import com.glsiA.projet.service.CategorieService;
+import com.glsiA.projet.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +29,17 @@ public class produitController {
 
         return  "produit/showProduit";
     }
+
+    @GetMapping("/rupture")
+    public  String afficherProduitRup(Model model)
+    {
+        //Model listProduit = model.addAllAttributes("listProduit", produitService.showallProduit());
+        model.addAttribute("listProduit",produitService.showallProduitRup());
+
+
+        return  "produit/rupProduit";
+    }
+
     @GetMapping("/create")
     public  String afficherFormulaire(Model  model){
         model.addAttribute("listCat",categorieService.showallCategorie());

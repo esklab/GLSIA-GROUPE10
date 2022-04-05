@@ -1,17 +1,21 @@
-package com.java.tp1.modele;
+package com.glsiA.projet.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
+//@Entity
+//@Getter
+//@Setter
 @Entity
-@Getter
-@Setter
-@Table(name = "produits")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "vente")
 public class Vente {
 
     @Id
@@ -33,7 +37,10 @@ public class Vente {
     private Categorie categorie;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private Set<Approvisionement> approvisionements;
+    private List<Approvisionement> approvisionements;
 
-
+    @ManyToOne()
+    @JoinColumn(name = "client_id", insertable = false, updatable = false)
+    private User client;
+    private int client_id;
 }

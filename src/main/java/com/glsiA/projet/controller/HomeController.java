@@ -1,4 +1,4 @@
-package com.glsia.tp1.controller;
+package com.glsiA.projet.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ public class HomeController {
     @GetMapping({"/", "/login"})
     public String index()
     {
-        return "login";
+        return "loginn";
     }
 
     @GetMapping("/dashboard")

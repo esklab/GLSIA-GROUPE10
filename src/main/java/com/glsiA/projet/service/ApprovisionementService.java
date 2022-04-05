@@ -1,9 +1,9 @@
-package com.java.tp1.service;
+package com.glsiA.projet.service;
 
-import com.java.tp1.modele.Approvisionement;
-import com.java.tp1.modele.Categorie;
-import com.java.tp1.repository.ApprovisionementRepository;
-import com.java.tp1.repository.CategorieRepository;
+import com.glsiA.projet.models.Approvisionement;
+import com.glsiA.projet.models.Categorie;
+import com.glsiA.projet.repository.ApprovisionementRepository;
+import com.glsiA.projet.repository.CategorieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,10 @@ public class ApprovisionementService {
 
     public  void saveApprovisionement(Approvisionement approvisionement){
         approvisionementRepository.save(approvisionement);
+    }
+
+    public  void updateProduit (int id, int quantite){
+        approvisionementRepository.updateProduit(id,quantite);
     }
 
     public  void deleteApprovisionement(int id){

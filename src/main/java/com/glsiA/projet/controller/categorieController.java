@@ -1,9 +1,9 @@
-package com.java.tp1.controller;
+package com.glsiA.projet.controller;
 
 
-import com.java.tp1.modele.Categorie;
+import com.glsiA.projet.models.Categorie;
 
-import com.java.tp1.service.CategorieService;
+import com.glsiA.projet.service.CategorieService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

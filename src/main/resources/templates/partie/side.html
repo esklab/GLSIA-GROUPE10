@@ -1,10 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:fragment="side">
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.html">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Produit</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/produit/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste Produit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/produit/rupture}">
+                            <i class="bi bi-circle"></i><span>Liste Produit en rupture</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/produit/create}">
+                            <i class="bi bi-circle"></i><span>Enregistrer Produit</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- Produit -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Categorie</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/categorie/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste categorie</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/categorie/create}">
+                            <i class="bi bi-circle"></i><span>Enregistrer Categorie</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- Categorie -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#component" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Approvisionement</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="component" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/approvisionement/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste approvisionement</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/approvisionement/create}">
+                            <i class="bi bi-circle"></i><span>Enregistrer approvisionement</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- Approvisionement -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#componen" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Vente</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="componen" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/vente/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste Vente</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/vente/create}">
+                            <i class="bi bi-circle"></i><span>Enregistrer Vente</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- Vente -->
+        </ul>
+
+    </aside><!-- End Sidebar-->
+</th:block>
 </html>

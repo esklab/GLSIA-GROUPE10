@@ -1,4 +1,4 @@
-package com.java.tp1.modele;
+package com.glsiA.projet.models;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,8 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "approvisionement")
 public class Approvisionement {
     @Id
@@ -23,7 +24,8 @@ public class Approvisionement {
     private   LocalDate dateCreation;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "produit_id", nullable = false)
     private Produit produit;
+   // private int produit_id;
 
 }

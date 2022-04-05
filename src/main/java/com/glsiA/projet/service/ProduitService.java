@@ -1,7 +1,7 @@
-package com.java.tp1.service;
+package com.glsiA.projet.service;
 
-import com.java.tp1.modele.Produit;
-import com.java.tp1.repository.ProduitRepository;
+import com.glsiA.projet.models.Produit;
+import com.glsiA.projet.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,12 @@ public class ProduitService {
     {
         return  produitRepository.findAll();
     }
+
+    public List<Produit> showallProduitRup()
+    {
+        return  produitRepository.produitRupture();
+    }
+
 
     public Produit  showProduit( int id){
         Optional<Produit> optional =produitRepository.findById(id);

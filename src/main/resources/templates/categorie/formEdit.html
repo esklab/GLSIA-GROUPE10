@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <th:block th:replace="partie/stylehaut :: stylehaut"></th:block>
+
+
 </head>
 <body>
 
+<th:block th:replace="partie/haut :: haut"></th:block>
+<th:block th:replace="partie/side :: side"></th:block>
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div>
 <div class="container">
     <h2>formulaire de modification</h2>
     <form th:action="@{/produit/save}" th:object="${unCategorie}" method="post">
@@ -25,6 +44,10 @@
     </form>
 
 </div>
+
+</main>
+<th:block th:replace="partie/bas :: bas"></th:block>
+
 <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 
 </body>

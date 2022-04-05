@@ -1,6 +1,6 @@
-package com.glsia.tp1.repository;
+package com.glsiA.projet.repository;
 
-import com.glsia.tp1.models.User;
+import com.glsiA.projet.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

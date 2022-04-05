@@ -1,4 +1,4 @@
-package com.java.tp1.modele;
+package com.glsiA.projet.models;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "produits")
+@Table(name = "produit")
 public class Produit {
 
     @Id
@@ -39,7 +39,7 @@ public class Produit {
     @JoinColumn(name = "category_id", nullable = false)
     private Categorie categorie;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private Set<Approvisionement> approvisionements;
 
 
