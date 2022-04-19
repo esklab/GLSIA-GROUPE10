@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-//@Getter
-//@Setter
+@Getter
+@Setter
 
-@Data
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "client")
@@ -41,6 +41,6 @@ public class Client {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Vente> vents;
+    private Set<Vente> ventes;
 
 }

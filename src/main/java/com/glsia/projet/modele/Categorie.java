@@ -11,9 +11,9 @@ import java.util.Set;
 @Entity
 @Table(name="categorie")
 // @Data -- bug
-//@Getter
-//@Setter
-@Data
+@Getter
+@Setter
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Categorie {

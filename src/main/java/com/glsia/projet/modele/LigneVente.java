@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-//@Getter
-//@Setter
+@Getter
+@Setter
 
-@Data
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "lignevente")
