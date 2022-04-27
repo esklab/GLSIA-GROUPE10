@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <th:block th:replace="partie/stylehaut :: stylehaut"></th:block>
+
+
+</head>
+<body>
+
+<th:block th:replace="partie/haut :: haut"></th:block>
+<th:block th:replace="partie/side :: side"></th:block>
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div>
+<div class="container">
+    <h2>formulaire de modification</h2>
+    <form th:action="@{/produit/save}" th:object="${unCategorie}" method="post">
+        <div class="mb-3" >
+            <input  name="id" th:field="*{id}" type="hidden"  />
+            <input  name="id" th:field="*{dateCreation}" type="hidden"  />
+
+        </div>
+
+        <div class="mb-3" >
+            <label class="form-label">Libelle</label>
+            <input name="libelle" type="text" th:field="*{libelle}" class="form-control" placeholder="libellé du  produit"/>
+        </div>
+
+        <button TYPE="submit" CLASS="btn btn-primary">ok</button>
+    </form>
+
+</div>
+
+</main>
+<th:block th:replace="partie/bas :: bas"></th:block>
+
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

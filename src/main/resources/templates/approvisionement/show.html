@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>liste des  produits</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+
+</head>
+<body>
+
+
+
+<div class="container">
+    <h2 class="title">liste des Approvisionement</h2>
+    <table class="table  table-striped table-warning">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Produit </th>
+            <th scope="col">Date </th>
+            <th scope="col">Quantite</th>
+            <th></th>
+
+
+
+        </tr>
+        </thead>
+        <tr th:each="p:${list}">
+            <th scope="row" th:text="${p.id}">1</th>
+            <td th:text="${p.}"></td>
+            <td th:text="${p.dateCreation}"></td>
+            <td>
+                <a th:href="@{/categorie/edit/{id}(id=${p.id})}">Edit |</a>
+                <a th:href="@{/categorie/delete/{id}(id=${p.id})}">Delete</a>
+            </td>
+
+
+
+
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
