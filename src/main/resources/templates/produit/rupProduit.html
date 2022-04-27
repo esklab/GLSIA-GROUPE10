@@ -39,6 +39,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Categorie</th>
                 <th scope="col">Libelle</th>
                 <th scope="col">Qte Stock</th>
                 <th scope="col">Qte seuil</th>
@@ -52,6 +53,7 @@
             </thead>
             <tr th:each="p:${listProduit}">
                 <th scope="row" th:text="${p.id}">1</th>
+                <td th:text="${p.categorie.libelle}"></td>
                 <td th:text="${p.libelle}"></td>
                 <td th:text="${p.qteStok}"></td>
                 <td th:text="${p.qteSeuil}"></td>

@@ -6,12 +6,17 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
-
+/*
 @Entity
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+*/
+@Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Table(name = "produit")
+
 public class Produit {
 
     @Id
@@ -36,11 +41,12 @@ public class Produit {
     private LocalDate dateCreation;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id",nullable = false, insertable = false, updatable = false)
     private Categorie categorie;
-
+    private int category_id;
+/*
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private Set<Approvisionement> approvisionements;
-
+*/
 
 }

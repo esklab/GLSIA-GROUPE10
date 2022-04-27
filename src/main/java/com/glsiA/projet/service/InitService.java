@@ -1,7 +1,7 @@
-package com.glsia.tp1.service;
+package com.glsiA.projet.service;
 
-import com.glsia.tp1.models.User;
-import com.glsia.tp1.repository.UserRepository;
+import com.glsiA.projet.models.User;
+import com.glsiA.projet.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,13 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class DbInitService implements CommandLineRunner {
+public class InitService implements CommandLineRunner {
 
     private PasswordEncoder passwordEncoder;
 
     private UserRepository userRepository;
 
-    public DbInitService(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public InitService(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
@@ -26,7 +26,7 @@ public class DbInitService implements CommandLineRunner {
     public void run(String... args) {
 
         //creation de l'admin
-        User admin = new User("admin", passwordEncoder.encode("admin123"),"Doe","John","ADMIN","");
+        User admin = new User("admin", passwordEncoder.encode("admin"),"Adjaro","edina","ADMIN","");
 
         List<User> users = Arrays.asList(admin);
 

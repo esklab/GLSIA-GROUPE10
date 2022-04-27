@@ -27,17 +27,25 @@
 
 <div class="container">
     <h2>formulaire de modification</h2>
-    <form th:action="@{/produit/save}" th:object="${unCategorie}" method="post">
-        <div class="mb-3" >
-            <input  name="id" th:field="*{id}" type="hidden"  />
-            <input  name="id" th:field="*{dateCreation}" type="hidden"  />
+    <form class="user" th:action="@{/approvisionement/edit}" th:object="${produit}" method="post">
 
+
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input  readonly  name="produit_id" th:field="*{produit_id}"  class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input readonly  name="dateCreation" th:field="*{dateCreation}" class="form-control">
+                <input type="hidden"  name="id" th:field="*{id}" class="form-control">
+            </div>
         </div>
 
-        <div class="mb-3" >
-            <label class="form-label">Libelle</label>
-            <input name="libelle" type="text" th:field="*{libelle}" class="form-control" placeholder="libellé du  produit"/>
-        </div>
+        <div class="col-sm-6">
+                <input type="number"  th:field="*{quantite}" class="form-control btn-user btn-block" name="quantite" placeholder="quantite">
+            </div>
+
 
 
         <button TYPE="submit" CLASS="btn btn-primary">ok</button>

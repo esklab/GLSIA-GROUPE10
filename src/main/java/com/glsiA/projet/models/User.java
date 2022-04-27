@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
+
 @Table(name = "Users")
 public class User {
 
@@ -39,8 +40,8 @@ public class User {
     @NotNull
     private String permission = "";
 
-     @OneToMany(mappedBy = "user")
-    private List<LigneVente> ligneVentes;
+     /*@OneToMany(mappedBy = "user")
+    private List<LigneVente> ligneVentes;*/
 
 
 

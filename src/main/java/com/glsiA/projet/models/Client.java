@@ -8,14 +8,15 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-
 @Entity
-//@Getter
-//@Setter
-
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+/*
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor*/
 @Table(name = "client")
 public class Client {
     @Id
@@ -40,9 +41,8 @@ public class Client {
     @CreationTimestamp
     private LocalDate dateCreation;
 
-
-
+/*
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Vente> ventes;
+    private Set<Vente> ventes;*/
 
 }

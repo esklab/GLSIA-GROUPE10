@@ -8,13 +8,14 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-//@Entity
-//@Getter
-//@Setter
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+/*@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor*/
 @Table(name = "vente")
 public class Vente {
 
@@ -32,15 +33,13 @@ public class Vente {
     @CreationTimestamp
     private LocalDate dateCreation;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Categorie categorie;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
+
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private List<Approvisionement> approvisionements;
-
+        */
     @ManyToOne()
-    @JoinColumn(name = "client_id", insertable = false, updatable = false)
+    @JoinColumn(name = "client_id", nullable = false,insertable = false, updatable = false)
     private User client;
     private int client_id;
 }

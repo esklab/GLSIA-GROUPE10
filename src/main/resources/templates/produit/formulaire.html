@@ -31,6 +31,19 @@
 
     <form th:action="@{/produit/save}"  method="post">
 
+        <div class="form-group col-md-4">
+            <label for="inputState">Categorie</label>
+            <select id="inputState" name="category_id" required class="form-control">
+                <option value="" > Selectionner une catégorie</option>
+                <option th:each="a:${listCat}"
+                        th:value="${a.id}"
+                        th:text="${a.libelle}"> </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input name="libelle" type="text" class="form-control" placeholder="Nom  du  produit"/>
+        </div>
 
         <div class="mb-3">
             <label class="form-label">Quantité seuil</label>
@@ -41,16 +54,6 @@
         <div class="mb-3">
             <label class="form-label">Prix</label>
             <input name="prix" type="number" class="form-control" placeholder="Quantité seuil"/>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Categorie</label>
-            <select name="categorieId">
-
-                <option th:each="a:${listCat}"
-                        th:value="${a.id}"
-                        th:text="${a.libelle}">     00</option>
-            </select>
         </div>
 
         <button TYPE="submit" CLASS="btn btn-primary">ok</button>

@@ -23,6 +23,14 @@ public class ApprovisionementService {
         approvisionementRepository.updateProduit(id,quantite);
     }
 
+
+    public  void updateProduitMod (int id, int quantite,int quantiteac){
+        approvisionementRepository.updateProduitMod(id,quantite,quantiteac);
+    }
+    public  void updateProduitDel (int id, int quantite){
+        approvisionementRepository.updateProduitDel(id,quantite);
+    }
+
     public  void deleteApprovisionement(int id){
         approvisionementRepository.deleteById(id);
     }

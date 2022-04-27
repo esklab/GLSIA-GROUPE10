@@ -5,11 +5,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+/*
 @Entity
-@Data
+*/
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Table(name = "lignevente")
 public class LigneVente {
     @Id
@@ -24,12 +26,14 @@ public class LigneVente {
     private   LocalDate dateCreation;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "produit_id", nullable = false, insertable = false, updatable = false)
     private Produit produit;
+    private int produit_id;
 
     @ManyToOne()
-    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    @JoinColumn(name = "userId", nullable = false,insertable = false, updatable = false)
     private User user;
     private int userId;
+
 
 }

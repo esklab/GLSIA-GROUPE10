@@ -17,6 +17,10 @@ public class ProduitService {
         produitRepository.save(produit);
     }
 
+    public  void rechercherProduit(String libelle){
+        produitRepository.rechercher(libelle);
+    }
+
     public  void deleteProduit(int id){
         produitRepository.deleteById(id);
     }

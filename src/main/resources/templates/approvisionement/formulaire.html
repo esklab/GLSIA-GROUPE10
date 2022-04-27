@@ -29,11 +29,24 @@
 
 <div class="container">
     <h2>formulaire de saisie  de categorie</h2>
-    <form th:action="@{/categorie/save}"  method="post">
-        <div class="mb-3" >
-            <label class="form-label">Libelle</label>
-            <input name="libelle" type="text" class="form-control" placeholder="libellé du  produit"/>
+    <form class="user" th:action="@{/approvisionement/save}" th:object="${produit}" method="post">
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="hidden"  name="produit_id" th:value="${produit.id}" class="form-control">
+            </div>
         </div>
+        <div >
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" readonly th:value="${produit.libelle}" class="form-control btn-user btn-block">
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" readonly th:value="${produit.qteSeuil}" class="form-control btn-user btn-block">
+            </div>
+            <div class="col-sm-6">
+                <input type="number" required class="form-control btn-user btn-block" name="quantite" placeholder="quantite">
+            </div>
+        </div>
+        <hr>
 
         <button TYPE="submit" CLASS="btn btn-primary">ok</button>
     </form>

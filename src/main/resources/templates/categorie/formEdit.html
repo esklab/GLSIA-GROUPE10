@@ -28,16 +28,16 @@
     </div>
 <div class="container">
     <h2>formulaire de modification</h2>
-    <form th:action="@{/produit/save}" th:object="${unCategorie}" method="post">
+    <form th:action="@{/categorie/edit}" th:object="${unCategorie}" method="post">
         <div class="mb-3" >
             <input  name="id" th:field="*{id}" type="hidden"  />
-            <input  name="id" th:field="*{dateCreation}" type="hidden"  />
+            <input  name="dateCreation" th:field="*{dateCreation}" type="hidden"  />
 
         </div>
 
         <div class="mb-3" >
             <label class="form-label">Libelle</label>
-            <input name="libelle" type="text" th:field="*{libelle}" class="form-control" placeholder="libellé du  produit"/>
+            <input name="libelle" type="text" required="required" th:field="*{libelle}" class="form-control" placeholder="libellé du  produit"/>
         </div>
 
         <button TYPE="submit" CLASS="btn btn-primary">ok</button>

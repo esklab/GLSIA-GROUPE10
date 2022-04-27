@@ -9,24 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping("/produit")
-public class produitController {
+public class ProduitController {
     @Autowired
     private ProduitService produitService;
 
     @Autowired
     private CategorieService categorieService;
 
+
+
     @GetMapping("/afficher")
     public  String afficherProduit(Model model)
     {
         //Model listProduit = model.addAllAttributes("listProduit", produitService.showallProduit());
        model.addAttribute("listProduit",produitService.showallProduit());
-
-
         return  "produit/showProduit";
     }
 
@@ -35,8 +34,6 @@ public class produitController {
     {
         //Model listProduit = model.addAllAttributes("listProduit", produitService.showallProduit());
         model.addAttribute("listProduit",produitService.showallProduitRup());
-
-
         return  "produit/rupProduit";
     }
 
@@ -50,6 +47,7 @@ public class produitController {
     @PostMapping("/save")
     public  String  save(Produit produit){
         produit.setQteStok(0);
+
         produit.setDateCreation(LocalDate.now());
         produitService.saveProduit(produit);
         return  "redirect:/produit/afficher";
@@ -65,7 +63,6 @@ public class produitController {
 
     @PostMapping ("/edit")
     public  String edit(@ModelAttribute("unProduit" ) Produit produit){
-
 
         produitService.saveProduit(produit);
         return  "redirect:/produit/afficher";

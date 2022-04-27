@@ -43,17 +43,16 @@
 
         </tr>
         </thead>
-        <tr th:each="p:${list}">
-            <th scope="row" th:text="${p.id}">1</th>
-            <td th:text="${p.}"></td>
-            <td th:text="${p.dateCreation}"></td>
+
+
+        <tr th:each="Approvisionnement :${list}">
+            <th th:text="${Approvisionnement.id}" scope="row"></th>
+            <td th:text="${Approvisionnement.produit.libelle}"></td>
+            <td th:text="${Approvisionnement.quantite}"></td>
             <td>
-                <a th:href="@{/categorie/edit/{id}(id=${p.id})}">Edit |</a>
-                <a th:href="@{/categorie/delete/{id}(id=${p.id})}">Delete</a>
+                <a th:href="@{/approvisionement/edit/{id}(id=${Approvisionnement.id})}" class="btn btn-warning"><i class="fas fa-pencil-alt fa-sm fa-fw mr-2 text-center text-white"></i></a>
+                <a th:href="@{/approvisionement/delete/{id}(id=${Approvisionnement.id})} " class="btn btn-danger"><i class="fas fa-trash-alt fa-sm fa-fw mr-2 text-center text-white"></i> </a>
             </td>
-
-
-
 
         </tr>
     </table>

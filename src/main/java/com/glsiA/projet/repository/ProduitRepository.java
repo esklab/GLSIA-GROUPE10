@@ -16,4 +16,8 @@ public interface ProduitRepository  extends JpaRepository <Produit, Integer> {
 
     @Query("FROM Produit where qteSeuil > qteStok")
     public List<Produit> produitRupture ();
+
+
+    @Query("FROM Produit where libelle = ?1")
+    public List<Produit> rechercher (String libelle);
 }

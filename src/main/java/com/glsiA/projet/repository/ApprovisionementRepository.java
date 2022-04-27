@@ -19,5 +19,15 @@ public interface ApprovisionementRepository  extends JpaRepository<Approvisionem
     @Query(value = "update Produit a set a.qteStok = a.qteStok + :quantite where a.id = :id")
     void updateProduit(@Param("id") Integer id, @Param("quantite") int quantite);
 
+    @Modifying
+    @Transactional
+    @Query(value = "update Produit a set a.qteStok = a.qteStok + :quantite - :quantiteac where a.id = :id")
+    void updateProduitMod(@Param("id") Integer id, @Param("quantite") int quantite,@Param("quantiteac") int quantiteac);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update Produit a set a.qteStok = a.qteStok - :quantite where a.id = :id")
+    void updateProduitDel(@Param("id") Integer id, @Param("quantite") int quantite);
+
 
 }

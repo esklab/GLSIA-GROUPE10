@@ -1,8 +1,6 @@
 package com.glsiA.projet.controller;
 
-import com.glsiA.projet.models.LigneVente;
-import com.glsiA.projet.models.Produit;
-import com.glsiA.projet.models.Vente;
+import com.glsiA.projet.models.*;
 import com.glsiA.projet.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +30,9 @@ public class VenteController {
     List<LigneVente> ligneVente = new ArrayList<>();
     List<Produit> listtwo =  new ArrayList<>();
 
+    List<VenteDto> listtree = new ArrayList<>();
+    ListVenteDto listfour = new ListVenteDto();
+
     @GetMapping("/afficher")
     public  String afficherVente(Model model)
     {
@@ -41,17 +42,30 @@ public class VenteController {
 
     @GetMapping("/create")
     public  String afficherFormulaire(Model model){
+        VenteDto one =  new VenteDto();
         model.addAttribute("listProduit",produitService.showallProduit());
        // ligneVente = ligneVenteService.showallLigneVente();
         listtwo.removeAll( listtwo);
+        //listtwo.venteDtoList.removeAll(listtwo.getVenteDtoList());
+        listtree.removeAll(listtree);
+        listfour.venteDtoList.removeAll(listtree);
         if(!ligneVente.isEmpty())
         {
         for (int i = 0; i < ligneVente.size(); i++) {
             listtwo.add(ligneVente.get(i).getProduit());
+            one.setProduit(ligneVente.get(i).getProduit());
+            one.setQuantite(ligneVente.get(i).getQuantite());
+            listtree.add(one);
+
         }
         }
 
+
+        listfour.venteDtoList.addAll(listtree);
         model.addAttribute("listLigne",listtwo);
+        model.addAttribute("listTotal",listfour.getTotal());
+
+        //listtree.get(1).produit.getLibelle()
 
         return  "vente/formulaire";
     }
@@ -59,13 +73,15 @@ public class VenteController {
     @GetMapping("/creat/{id}")
     public  String  afficher(@PathVariable("id") int id){
         boolean abc = false;
-        Produit pro = produitService.showProduit(id);
+
         for (int i = 0; i < ligneVente.size(); i++) {
-            if (ligneVente.get(i).getProduit() == pro) {
+            if (ligneVente.get(i).getProduit().getId() == id) {
                 abc= true;
             }
         }
-        if(abc== false){
+
+        if(abc == false){
+            Produit pro = produitService.showProduit(id);
         LigneVente aaz= new LigneVente();
         aaz.setQuantite(1);
         aaz.setProduit(pro);
@@ -80,12 +96,17 @@ public class VenteController {
         boolean abc = false;
         Produit pro = produitService.showProduit(id);
         for (int i = 0; i < ligneVente.size(); i++) {
-            if (ligneVente.get(i).getProduit() == pro) {
+            if (ligneVente.get(i).getProduit().getId() == id) {
                 ligneVente.remove(i);
             }
         }
 
 
+        return  "redirect:/vente/create";
+    }
+
+    @PostMapping("/quante")
+    public  String  save(Validate validate){
         return  "redirect:/vente/create";
     }
 

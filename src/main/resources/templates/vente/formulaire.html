@@ -74,7 +74,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Liste selectioner</h5>
-
                         <!-- Table with stripped rows -->
                         <table class="table table-striped">
                             <thead>
@@ -87,18 +86,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="p:${listLigne}">
-                                <th scope="row" th:text="${p.id}"></th>
-                                <td th:text="${p.libelle}"></td>
 
-                                <td th:text="${p.prix}"></td>
+                            <tr th:each="a:${listLigne}">
+
+                                <th scope="row" th:text="${a.id}"></th>
+                                <td th:text="${a.libelle}"></td>
+
+                                <td th:text="${a.prix}"></td>
 
                                 <td>
-                                    <a th:href="@{/vente/remo/{id}(id=${p.id})}">Retirer</a>
-
+                                    <a th:href="@{/vente/remo/{id}(id=${a.id})}">Retirer</a>
                                 </td>
+
+
                             </tr>
 
+                            <tr th:text="${listTotal}">
+
+                            </tr>
 
                             </tbody>
                         </table>
@@ -113,6 +118,8 @@
         </div>
     </section>
 </main>
+
+
 <th:block th:replace="partie/bas :: bas"></th:block>
 <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
