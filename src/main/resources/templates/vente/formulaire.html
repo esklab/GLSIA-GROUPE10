@@ -13,6 +13,7 @@
 <th:block th:replace="partie/side :: side"></th:block>
 
 <main id="main" class="main">
+    <a th:href="@{/vente/validate}" class="btn btn-warning">Edit</a>
 
     <div class="pagetitle">
         <h1>Form Elements</h1>
@@ -89,10 +90,10 @@
 
                             <tr th:each="a:${listLigne}">
 
-                                <th scope="row" th:text="${a.id}"></th>
-                                <td th:text="${a.libelle}"></td>
+                                <th scope="row" th:text="${a.id}" th:field="*{a.id}"></th>
+                                <td th:text="${a.libelle}" th:field="*{a.libelle}"></td>
 
-                                <td th:text="${a.prix}"></td>
+                                <td th:text="${a.prix}" th:field="*{a.prix}"></td>
 
                                 <td>
                                     <a th:href="@{/vente/remo/{id}(id=${a.id})}">Retirer</a>
@@ -113,6 +114,9 @@
                 </div>
 
             </div>
+
+
+
 
 
         </div>

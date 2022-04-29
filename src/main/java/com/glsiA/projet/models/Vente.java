@@ -24,8 +24,8 @@ public class Vente {
     @Column(name="id")
     private int id;
 
-    @Column(name="libelle")
-    private String libelle;
+   // @Column(name="libelle")
+    //private String libelle;
 
 
 
@@ -35,11 +35,19 @@ public class Vente {
 
 
 
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
-    private List<Approvisionement> approvisionements;
-        */
+    @OneToMany(mappedBy = "vente")
+    private List<LigneVente> ligneVentes;
+
+
+
     @ManyToOne()
     @JoinColumn(name = "client_id", nullable = false,insertable = false, updatable = false)
-    private User client;
+    private Client client;
     private int client_id;
+
+    @ManyToOne()
+    @JoinColumn(name = "userId", nullable = false,insertable = false, updatable = false)
+    private User user;
+    private Integer userId;
+
 }

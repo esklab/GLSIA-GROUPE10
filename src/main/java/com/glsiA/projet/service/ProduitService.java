@@ -20,6 +20,9 @@ public class ProduitService {
     public  void rechercherProduit(String libelle){
         produitRepository.rechercher(libelle);
     }
+    public  void updateStock (int id, int quantite){
+        produitRepository.updateProduit(id,quantite);
+    }
 
     public  void deleteProduit(int id){
         produitRepository.deleteById(id);

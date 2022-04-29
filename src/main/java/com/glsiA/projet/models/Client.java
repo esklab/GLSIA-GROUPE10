@@ -41,8 +41,8 @@ public class Client {
     @CreationTimestamp
     private LocalDate dateCreation;
 
-/*
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Vente> ventes;*/
+
+   @OneToMany(mappedBy = "client")
+    private Set<Vente> ventes;
 
 }

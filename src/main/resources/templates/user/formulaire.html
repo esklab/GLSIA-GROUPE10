@@ -26,26 +26,28 @@
     </div>
 <div class="container">
     <h2>formulaire de saisie  de categorie</h2>
-    <form th:action="@{/client/save}"  method="post">
-        <div class="mb-3" >
-            <label class="form-label">nom</label>
-            <input name="nom" type="text" class="form-control" placeholder="nom client"/>
+    <form class="user" th:action="@{/Users/save}" method="post">
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                       placeholder="Username" name="username">
+            </div>
+            <div class="col-sm-6">
+                <input type="password" class="form-control form-control-user" id="exampleLastName"
+                       placeholder="Password" name="password">
+            </div>
         </div>
-        <div class="mb-3" >
-            <label class="form-label">prenom</label>
-            <input name="prenom" type="text"  class="form-control" placeholder="prenom client"/>
-        </div>
-        <div class="mb-3" >
-            <label class="form-label">Adresse</label>
-            <input name="adresse" type="text"  class="form-control" placeholder="adresse client"/>
-        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                   placeholder="Nom" name="nom">
 
-        <div class="mb-3" >
-            <label class="form-label">Telephone</label>
-            <input name="telephone" type="number"  class="form-control" placeholder="telephone client"/>
+            <input type="text" class="form-control form-control-user mt-3"
+                   id="exampleInputPassword" placeholder="Prénom" name="prenom">
         </div>
+        <hr>
 
-        <button TYPE="submit" CLASS="btn btn-primary">ok</button>
+        <button class="btn btn-success btn-user btn-block">Valider</button>
+
     </form>
 
 </div>

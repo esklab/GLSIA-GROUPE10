@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:fragment="javascript">
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+<script th:inline="javascript">
+    var produit_list = document.getElementById("produits");
+    var t_doby = document.getElementById("t_body");
+
+    var produit_selected_lib = document.getElementById("produit_lib");
+    var produit_selected_qte = document.getElementById("produit_qte");
+    var produit_selected_prix_unit = document.getElementById("prix");
+    var produit_selected_prix_total = document.getElementById("prix_total");
+
+    var added_row = document.getElementsByName("added_row");
+    var added_h6 = document.getElementsByName("added_h6");
+
+    var submit_button = document.getElementById("submit_button");
+
+
+    function commandAppend() {
+      addLine();
+      addValue();
+      reseter();
+      visiblitySetter();
+    }
+
+    function addLine() {
+      t_doby.insertAdjacentHTML("afterbegin",
+        '<tr name="added_row">\
+          <td>\
+            <h6 class="align-middle text-center text-sm" name="added_h6"></h6>\
+          </td>\
+          <td>\
+            <h6 class="align-middle text-center text-sm" name="added_h6"></h6>\
+          </td>\
+          <td class="align-middle text-center text-sm">\
+            <h6 class="align-middle text-center text-sm" name="added_h6"></h6>\
+          </td>\
+          <td class="align-middle">\
+            <h6 class="align-middle text-center text-sm" name="added_h6"></h6>\
+          </td>\
+          <td class="align-middle">\
+            <div class="font-weight-bold text-center" onclick="droper(this);">\
+              <i class="fas fa-trash-alt pt-2"></i>\
+            </div>\
+          </td>\
+        </tr>'
+      );
+    }
+
+    function addValue(){
+      console.log(added_h6.length);
+      added_h6.item(3).innerText = produit_selected_prix_total.value;
+      added_h6.item(2).innerText = produit_selected_prix_unit.value;
+      added_h6.item(1).innerText = produit_selected_qte.value;
+      added_h6.item(0).innerText = produit_selected_lib.options[produit_selected_lib.selectedIndex].text;
+    }
+
+    function totalPrice() {
+      var current_qte = produit_selected_qte.value;
+      var current_price = produit_selected_prix_unit.value;
+      if ((current_qte != null) && (current_price != null) && (current_qte >= 0)) {
+        produit_selected_prix_total.value = Number (current_qte) * Number (current_price);
+      }
+    }
+
+    function priceSetter() {
+      produit_selected_prix_unit.value = produit_selected_lib.options[produit_selected_lib.selectedIndex].getAttribute("prix");
+      totalPrice();
+    }
+
+    function reseter() {
+      produit_selected_lib.selectedIndex = 0;
+      produit_selected_prix_total.value = "";
+      produit_selected_qte.value = "";
+      produit_selected_prix_unit.value = "";
+    }
+
+    function droper(the_element) {
+      the_element.remove();
+      visiblitySetter();
+    }
+
+    function visiblitySetter() {
+      if (added_row.length > 0 ){
+        submit_button.style.visibility = "visible";
+      }
+      else {
+      submit_button.style.visibility = "hidden";
+      }
+    }
+
+  </script>
+
+</th:block>
+</html>

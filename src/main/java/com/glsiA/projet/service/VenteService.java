@@ -16,7 +16,14 @@ public class VenteService {
 
     public  void saveVente(Vente vente){
         venteRepository.save(vente);
+
+
     }
+
+    public  Vente lastSave(){
+       return venteRepository.lastSave();
+    }
+
 
     public  void deleteVente(int id){
         venteRepository.deleteById(id);

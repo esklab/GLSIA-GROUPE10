@@ -21,7 +21,8 @@ public class ListVenteDto {
 
             VenteDto b= venteDtoList.get(i);
            // a= a+ 1;
-            a= a + ( b.getQuantite() * b.getProduit().getPrix());
+         //   a= a + ( b.getQuantite() * b.getProduit().getPrix());
+            a=1;
         }
         return a;
     }

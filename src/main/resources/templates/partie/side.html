@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<html lang="fr" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <th:block th:fragment="side">
 
@@ -9,12 +9,46 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="index.html">
+                <a class="nav-link collapsed" th:href="@{/dashboard}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li><!-- Dashboard -->
-            <li class="nav-item">
+            <li sec:authorize="hasRole('ADMIN')"class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#component" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Approvisionement</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="component" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/approvisionement/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste approvisionement</span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </li><!-- Approvisionement -->
+            <li sec:authorize="hasRole('ADMIN')"class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Categorie</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/categorie/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste categorie</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/categorie/create}">
+                            <i class="bi bi-circle"></i><span>Enregistrer Categorie</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- Categorie -->
+            <li sec:authorize="hasRole('ADMIN')" class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Produit</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -37,41 +71,26 @@
 
                 </ul>
             </li><!-- Produit -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Categorie</span><i class="bi bi-chevron-down ms-auto"></i>
+            <li sec:authorize="hasRole('ADMIN')"class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#componn" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="componn" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a th:href="@{/categorie/afficher}">
-                            <i class="bi bi-circle"></i><span>Liste categorie</span>
+                        <a th:href="@{/client/afficher}">
+                            <i class="bi bi-circle"></i><span>Liste Client</span>
                         </a>
                     </li>
-
                     <li>
-                        <a th:href="@{/categorie/create}">
-                            <i class="bi bi-circle"></i><span>Enregistrer Categorie</span>
+                        <a th:href="@{/client/create}">
+                            <i class="bi bi-circle"></i><span>Ajouter Client</span>
                         </a>
                     </li>
-
-                </ul>
-            </li><!-- Categorie -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#component" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Approvisionement</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="component" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a th:href="@{/approvisionement/afficher}">
-                            <i class="bi bi-circle"></i><span>Liste approvisionement</span>
-                        </a>
-                    </li>
-
 
 
                 </ul>
-            </li><!-- Approvisionement -->
-            <li class="nav-item">
+            </li><!-- client -->
+            <li sec:authorize="hasRole('VENDEUR')"class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#componen" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Vente</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -83,13 +102,36 @@
                     </li>
 
                     <li>
-                        <a th:href="@{/vente/create}">
+                        <a th:href="@{/vente/add}">
                             <i class="bi bi-circle"></i><span>Enregistrer Vente</span>
                         </a>
                     </li>
 
                 </ul>
             </li><!-- Vente -->
+            <li sec:authorize="hasRole('ADMIN')"class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#comonn" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Utilisateur</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="comonn" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a th:href="@{/Users/all}">
+                            <i class="bi bi-circle"></i><span>Liste Utilisateur</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/Users/create}">
+                            <i class="bi bi-circle"></i><span>Ajouter Utilisateur</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li><!-- utilisateur -->
+
+
+
+
         </ul>
 
     </aside><!-- End Sidebar-->

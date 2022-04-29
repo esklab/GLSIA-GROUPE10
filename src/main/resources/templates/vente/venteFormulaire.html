@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <th:block th:replace="partie/stylehaut :: stylehaut"></th:block>
+</head>
+<body>
+<th:block th:replace="partie/haut :: haut"></th:block>
+<th:block th:replace="partie/side :: side"></th:block>
+<main id="main" class="main">
+
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Forms</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div>
+    <form th:action="@{/vente/saveligne}"  method="post">
+        <div class="card-body p-3" id="command_list">
+            <div class="row">
+                <div class="col-md-4 mb-md-0 mb-4">
+                    <select name="id"
+
+                            required
+                            class="form-control"
+                            id="produit_lib"
+                            th:onchange="priceSetter();">
+                        <option value="" > Selectionner une un produit</option>
+                        <option th:each="a:${listProduit}"
+                                th:value="${a.id}"
+                                th:text="${a.libelle+' '+ a.id}"
+                        >  </option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-md-0 mb-4">
+                    <input type="number"  name="quantite" id="produit_qte" class="form-control" placeholder="Quantité" >
+                </div>
+                <button TYPE="submit" CLASS="btn btn-primary">ok</button>
+            </div>
+
+        </div>
+    </form>
+    <div class="card-body p-3" >
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Prix</th>
+                    <th></th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="a:${listLigne}">
+
+                    <th scope="row" th:text="${a.produit.id}" th:field="*{a.produit.id}"></th>
+                    <td th:text="${a.quantite}" ></td>
+
+
+                    <td>
+                        <a th:href="@{/vente/remo/{id}(id=${a.produit.id})}">Retirer</a>
+                    </td>
+
+
+                </tr>
+
+                <tr th:text="${listTotal}">
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</main>
+<th:block th:replace="partie/javascript :: javascript"></th:block>
+<th:block th:replace="partie/bas :: bas"></th:block>
+</body>
+</html>
